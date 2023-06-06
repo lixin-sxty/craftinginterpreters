@@ -14,6 +14,7 @@ default: generate_ast $(CLASSES)
 	@: # Don't show "Nothing to be done" output.
 
 generate_ast:
+	@echo Generate AST
 	@cd lx/tool && java GenerateAst.java ../lox
 
 # Compile a single .java file to .class.
@@ -22,5 +23,5 @@ $(BUILD_DIR)/$(DIR)/%.class: $(DIR)/%.java
 	@javac -cp . -d $(BUILD_DIR)/$(DIR) $(JAVA_OPTIONS) -implicit:none $<
 	@printf "%8s %-60s %s\n" javac $< "$(JAVA_OPTIONS)"
 
-.PHONY: default clean
+.PHONY: default clean generate_ast
 .DEFAULT_GOAL := default
